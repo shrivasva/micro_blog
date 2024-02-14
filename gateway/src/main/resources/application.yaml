@@ -1,0 +1,39 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: gw
+  main:
+    web-application-type: REACTIVE
+  cloud:
+    gateway:
+      routes:
+        - id: user
+          uri: lb://us
+          predicates:
+            - Path=/api/users**,/api/users/**,/api/auth/**
+        - id: blog
+          uri: lb://bl
+          predicates:
+            - Path=/api/blog/**
+    #          filters:
+    #            - RewritePath=/user/(?<segment>.*), /$\{segment}
+    discovery:
+      locator:
+        enabled: true
+        lower-case-service-id: true
+
+eureka:
+  instance:
+    hostname: "localhost"
+  client:
+    service-url:
+      defaultZone: http://localhost:8090/eureka/
+
+jwt:
+  secret: 323600347821BE20E0EE1F6C4EAD15C7951F5D2B3759F8860A080A2C7B3411C3
+
+logging:
+  level:
+    org:
+      springframework: trace
