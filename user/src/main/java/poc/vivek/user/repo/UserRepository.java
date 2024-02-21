@@ -14,9 +14,11 @@ public interface UserRepository extends CrudRepository<User, Long> {
     UserResponseModel getUserByUsername(@Param("username") String username);
 
     User findByContactNo(String contactNo);
+
     @Modifying
     @Query("insert into APP_USERS_TEMP values (encrypt_iv(:value::bytea, :key::bytea, '0000000000000000'::bytea, 'AES'))")
     void insertTemp(@Param("value") String value, @Param("key") String key);
+
     @Query("select decrypt_iv(users.password::bytea, :key::bytea, '0000000000000000'::bytea, 'AES') from APP_USERS_TEMP  users where users.password = :value")
-    String getTemp(@Param("value") String value,@Param("key") String key);
+    String getTemp(@Param("value") String value, @Param("key") String key);
 }

@@ -34,6 +34,7 @@ public class UserController {
         userService.insertTemp(pass);
         return new ResponseEntityBuilder<ResponseModel>().setStatusCode(HttpStatus.OK).setErCode("000").setMessage("SUCCESS").setBody("SUCCESS").build();
     }
+
     @GetMapping("/getTemp/{pass}")
     public ResponseEntity<ResponseModel> getTemp(@PathVariable String pass) throws Exception {
         return new ResponseEntityBuilder<ResponseModel>().setStatusCode(HttpStatus.OK).setErCode("000").setMessage("SUCCESS").setBody(userService.getTemp(new String(Base64.getDecoder().decode(pass.getBytes())))).build();

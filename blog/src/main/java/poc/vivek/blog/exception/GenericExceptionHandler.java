@@ -16,9 +16,10 @@ public class GenericExceptionHandler {
 
     @ExceptionHandler(UnexpectedTypeException.class)
     public ResponseEntity<ResponseModel> unexpectedTypeException(Exception ex) {
-       ex.printStackTrace();
+        ex.printStackTrace();
         return new ResponseEntityBuilder<ResponseModel>().setStatusCode(HttpStatus.BAD_REQUEST).setErCode("998").setMessage("FAILURE").setBody(ex.getMessage()).build();
     }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ResponseModel> exception(Exception ex) {
         ex.printStackTrace();

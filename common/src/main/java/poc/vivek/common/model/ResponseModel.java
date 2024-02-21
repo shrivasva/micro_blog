@@ -1,6 +1,6 @@
 package poc.vivek.common.model;
 
-public class ResponseModel  {
+public class ResponseModel {
     private String status;
     private String code;
     private Object body;

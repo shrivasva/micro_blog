@@ -45,7 +45,7 @@ public class EngagementService implements IEngagementService {
         List<EngagementComments> engagementCommentList = engagementCommentsRepository.getAllCommentsByBlogIdAndCommentId(blogId, userId);
         List<EngagementCommentResponseModel> engagementCommentResponseModelList = new ArrayList<>();
 
-        for (EngagementComments engagementComment: engagementCommentList) {
+        for (EngagementComments engagementComment : engagementCommentList) {
             EngagementCommentResponseModel engagementCommentResponseModel = new EngagementCommentResponseModel();
             engagementCommentResponseModel.setComment(new String(engagementComment.getComment()));
             engagementCommentResponseModel.setCommentId(engagementComment.getCommentId());

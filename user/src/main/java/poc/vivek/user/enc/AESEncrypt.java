@@ -5,17 +5,16 @@ import org.springframework.stereotype.Component;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.GCMParameterSpec;
-import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
 
 @Component
 public class AESEncrypt {
+    private static final String algorithm = "AES/GCM/NoPadding";
     @Value("${aes.secret}")
     private String secretKey;
     @Value("${aes.iv}")
     private String secretIV;
-    private static final String algorithm = "AES/GCM/NoPadding";
 
     public String encrypt(String data) throws Exception {
         SecretKeySpec secretKeySpec = new SecretKeySpec(secretKey.getBytes(), "AES");
