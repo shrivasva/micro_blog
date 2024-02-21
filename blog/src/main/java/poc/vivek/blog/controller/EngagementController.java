@@ -48,7 +48,7 @@ public class EngagementController {
 
     @GetMapping("/engagementCount/{blogId}/{userId}")
     public ResponseEntity<ResponseModel> getEngagementCount(@Valid @PathVariable @NotNull long blogId, @Valid @PathVariable @NotNull long userId) {
-        return new ResponseEntityBuilder<ResponseModel>().setStatusCode(HttpStatus.OK).setErCode("000").setMessage("SUCCESS").setBody( engagementService.getEngagementCount(blogId, userId)).build();
+        return new ResponseEntityBuilder<ResponseModel>().setStatusCode(HttpStatus.OK).setErCode("000").setMessage("SUCCESS").setBody(engagementService.getEngagementCount(blogId, userId)).build();
     }
 
     @GetMapping("/engagementCount/{userId}")

@@ -33,16 +33,19 @@ public class BlogController {
         BlogResponseModel userResponseModel = blogService.updateBlog(blogRequestModel);
         return new ResponseEntityBuilder<ResponseModel>().setStatusCode(HttpStatus.OK).setErCode("000").setMessage("SUCCESS").setBody(userResponseModel).build();
     }
+
     @PostMapping("/deleteBlog")
     public ResponseEntity<ResponseModel> deleteBlog(@Valid @RequestBody BlogRequestModel blogRequestModel) {
         BlogResponseModel userResponseModel = blogService.deleteBlog(blogRequestModel);
         return new ResponseEntityBuilder<ResponseModel>().setStatusCode(HttpStatus.OK).setErCode("000").setMessage("SUCCESS").setBody(userResponseModel).build();
     }
+
     @PostMapping("/getAllBlogByUser")
     public ResponseEntity<ResponseModel> getAllBlogByUser(@Valid @RequestBody BlogRequestModel blogRequestModel) {
         List<BlogResponseModel> userResponseModels = blogService.getAllBlogByUser(blogRequestModel);
         return new ResponseEntityBuilder<ResponseModel>().setStatusCode(HttpStatus.OK).setErCode("000").setMessage("SUCCESS").setBody(userResponseModels).build();
     }
+
     @PostMapping("/getAllBlogById")
     public ResponseEntity<ResponseModel> getAllBlogBIdAndUserId(@Valid @RequestBody BlogRequestModel blogRequestModel) {
         BlogResponseModel userResponseModel = blogService.getAllBlogBIdAndUserId(blogRequestModel);
