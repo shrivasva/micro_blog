@@ -16,7 +16,6 @@ import poc.vivek.user.repo.UserRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 @Service
 public class UserService implements IUserService {
@@ -35,7 +34,7 @@ public class UserService implements IUserService {
     public Iterable<UserResponseModel> getAllUsers() throws Exception {
         Iterable<User> users = userRepository.findAll();
         List<UserResponseModel> userResponseModels = new ArrayList<>();
-        for (User user:users) {
+        for (User user : users) {
             UserResponseModel userResponseModel = new UserResponseModel();
             BeanUtils.copyProperties(user, userResponseModel);
             userResponseModel.setContactNo(aesEncrypt.decrypt(user.getContactNo()));
